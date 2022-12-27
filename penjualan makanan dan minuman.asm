@@ -4,7 +4,7 @@ org 100h
 start:
       jmp mulai
 nama db 13,10,"Nama Pembeli: $"
-tampung_nama db 30,?,30 dp\up(?)
+tampung_nama db 30,?,30 dup(?)
 daftar db 13,10,'|--------------------------------------------------|'
        db 13,10,'|-------------------Menu Makanan-------------------|'
        db 13,10,'|--------------------------------------------------|'
@@ -51,6 +51,7 @@ mulai:
     lea dx,nama
     int 21h
     mov ah,0ah
+    lea dx,tampung_nama
     int 21h 
      
     mov ah,09h
