@@ -4,7 +4,13 @@ org 100h
 start:
       jmp mulai
 nama db 13,10,"Nama Pembeli: $"
+alamat db 13,10,"Masukan Alamat anda: $"
+nohp db 13,10,"Masukan Nomor HP anda: $"
+
 tampung_nama db 30,?,30 dup(?)
+tampung_alamat db 40,?,40 dup(?)
+tampung_nohp db 50,?,50 dup(?)
+
 daftar db 13,10,'|--------------------------------------------------|'
        db 13,10,'|-------------------Menu Makanan-------------------|'
        db 13,10,'|--------------------------------------------------|'
@@ -53,6 +59,20 @@ mulai:
     mov ah,0ah
     lea dx,tampung_nama
     int 21h 
+    
+    mov ah,09h
+    lea dx,alamat
+    int 21h
+    mov ah,0ah
+    lea dx,tampung_alamat
+    int 21h 
+    
+    mov ah, 09h
+    lea dx,nohp
+    int 21h
+    mov ah,0ah
+    lea dx,tampung_nohp
+    int 21h
      
     mov ah,09h
     mov dx,offset daftar
@@ -154,6 +174,7 @@ hasil2:
 hasil3:
      mov ah,09h
      lea dx,teks3
+     int 21h
      jmp proses2
      int 21h
      int 20h
@@ -237,7 +258,7 @@ teks8 db 13,10,'Anda Memesan Milo Dingin Rp7.000'
 teks9 db 13,10,'Anda Memesan Kopi Susu Rp4.000'
       db 13,10,'Mohon ditunggu pesananya,Terimakasih $'
       
-teks10 db 13,10,'Anda Memesan Kpoi Hitam Rp4.000'
+teks10 db 13,10,'Anda Memesan Kopi Hitam Rp4.000'
       db 13,10,'Mohon ditunggu pesananya,Terimakasih $'
       
 teks11 db 13,10,'Anda Memesan Soda Gembira Rp7.000'
